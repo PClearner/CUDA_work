@@ -1,4 +1,14 @@
 实现CUDA的热门算子
+
+
+一维数组相较多维数组的好处:
+1.存储开销少，一维数组只需要一个指针，多维数组除了最后一维外都需要存指针，需要D1*D 2*..*D(N-1)个指针
+2.Malloc友好，多维数组需要多次malloc，并且释放后还会造成内存碎片
+3.访问效率高-维数组算出index后只需要-次dereference就能拿到对应元素，多维数组需要N次4.缓存友好,维数组内存连续，缓存命中率高
+5.方便做向量化，向量化指令(比如cpu上的avx和tensor core上的mma)对内存布局都有严格要求，不连续的内存基本告别这些指令优化
+6.对优化更友好，cuda编程到最后基本都是在优化内存访问，内存不连续时访问效率是非常低的
+
+
 _____________________________________________________
 1.gemm
 
@@ -16,7 +26,46 @@ _____________________________________________________
 
 float4优先级是比bank conflict高的！！！！！要尽量确保float4的前提下实现bank conflict。
 
+学习感悟（学不明白可以参考的思路）：一开始每行代码学习，自己手推cuda中的矩阵乘法计算，因为该算子需要算局部再累加，所以可能会给读者盘逻辑的时候绕懵，这里建议复习一下线性代数，尤其是矩阵分块乘法这块，把关于矩阵的乘法抽象化，会更有利于自己盘逻辑，复现代码。
+
 _____________________________________________________
+2.reduce
+这里写了两个版本来做比较：
+
+#################
+m_reduce函数来源：https://zhuanlan.zhihu.com/p/426978026
+#################
+book_reduce函数来源：CUDA编程：基础与实践_樊哲勇
+#################
+
+reduce其实本身逻辑也不难，相比前面的gemm没啥好讲的
+
+代码中做了十次比较
+m_reduce elasped_time:0.2132
+m_reduce compute sum:262144.000000,true compute sum:262144
+book_reduce elasped_time:0.1088
+book_reduce compute sum:262144.000000,true compute sum:262144
+m_reduce elasped_time:0.1282
+m_reduce compute sum:262144.000000,true compute sum:262144
+book_reduce elasped_time:0.0736
+book_reduce compute sum:262144.000000,true compute sum:262144
+m_reduce elasped_time:0.1262
+m_reduce compute sum:262144.000000,true compute sum:262144
+book_reduce elasped_time:0.0688
+book_reduce compute sum:262144.000000,true compute sum:262144
+m_reduce elasped_time:0.1254
+m_reduce compute sum:262144.000000,true compute sum:262144
+book_reduce elasped_time:0.0575
+book_reduce compute sum:262144.000000,true compute sum:262144
+m_reduce elasped_time:0.1254
+m_reduce compute sum:262144.000000,true compute sum:262144
+book_reduce elasped_time:0.0701
+book_reduce compute sum:262144.000000,true compute sum:262144
+
+相比之下CUDA编程：基础与实践_樊哲勇里面的实现方法是完胜的。个人认为主要是m_reduce的做法考虑过于局部了，可以发现，用书里的做法只用执行两次核函数即可，而m_reduce里面执行核函数的次数是不确定的，其次也没有过好的考虑自己的硬件资源是否支持这样的线程数量开销，书里通过跨步长一次将整体的reduce浓缩到一个网格中的做法很好的考虑了性能，查看连接里的帖子可以发现m_reduce的实现并没有考虑最后的聚合，注意力只放在了大头。
+
+不过二者在reduce上都提供了不错的思路。
+
 
 
 

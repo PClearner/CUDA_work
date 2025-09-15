@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/star/star/cuda/CUDA_work/build/op/gemm",
+  "command": "/usr/local/cuda-12.8/bin/nvcc -forward-unknown-to-host-compiler   -g -std=c++14 \"--generate-code=arch=compute_120,code=[compute_120,sm_120]\" -x cu -c /home/star/star/cuda/CUDA_work/op/gemm/m_gemm.cu -o CMakeFiles/gemm.dir/m_gemm.cu.o",
+  "file": "/home/star/star/cuda/CUDA_work/op/gemm/m_gemm.cu",
+  "output": "op/gemm/CMakeFiles/gemm.dir/m_gemm.cu.o"
+},
+{
+  "directory": "/home/star/star/cuda/CUDA_work/build/op/reduce",
+  "command": "/usr/local/cuda-12.8/bin/nvcc -forward-unknown-to-host-compiler   -g -std=c++14 \"--generate-code=arch=compute_120,code=[compute_120,sm_120]\" -x cu -c /home/star/star/cuda/CUDA_work/op/reduce/m_reduce.cu -o CMakeFiles/reduce.dir/m_reduce.cu.o",
+  "file": "/home/star/star/cuda/CUDA_work/op/reduce/m_reduce.cu",
+  "output": "op/reduce/CMakeFiles/reduce.dir/m_reduce.cu.o"
+},
+{
+  "directory": "/home/star/star/cuda/CUDA_work/build/op/softmax",
+  "command": "/usr/local/cuda-12.8/bin/nvcc -forward-unknown-to-host-compiler   -g -std=c++14 \"--generate-code=arch=compute_120,code=[compute_120,sm_120]\" -x cu -c /home/star/star/cuda/CUDA_work/op/softmax/m_softmax.cu -o CMakeFiles/softmax.dir/m_softmax.cu.o",
+  "file": "/home/star/star/cuda/CUDA_work/op/softmax/m_softmax.cu",
+  "output": "op/softmax/CMakeFiles/softmax.dir/m_softmax.cu.o"
+},
+{
+  "directory": "/home/star/star/cuda/CUDA_work/build/op/relu",
+  "command": "/usr/local/cuda-12.8/bin/nvcc -forward-unknown-to-host-compiler   -g -std=c++14 \"--generate-code=arch=compute_120,code=[compute_120,sm_120]\" -x cu -c /home/star/star/cuda/CUDA_work/op/relu/m_relu.cu -o CMakeFiles/relu.dir/m_relu.cu.o",
+  "file": "/home/star/star/cuda/CUDA_work/op/relu/m_relu.cu",
+  "output": "op/relu/CMakeFiles/relu.dir/m_relu.cu.o"
+},
+{
+  "directory": "/home/star/star/cuda/CUDA_work/build/op/rmsnorm",
+  "command": "/usr/local/cuda-12.8/bin/nvcc -forward-unknown-to-host-compiler   -g -std=c++14 \"--generate-code=arch=compute_120,code=[compute_120,sm_120]\" -G -g -x cu -c /home/star/star/cuda/CUDA_work/op/rmsnorm/m_rmsnorm.cu -o CMakeFiles/rmsnorm.dir/m_rmsnorm.cu.o",
+  "file": "/home/star/star/cuda/CUDA_work/op/rmsnorm/m_rmsnorm.cu",
+  "output": "op/rmsnorm/CMakeFiles/rmsnorm.dir/m_rmsnorm.cu.o"
+},
+{
+  "directory": "/home/star/star/cuda/CUDA_work/build/op/mha",
+  "command": "/usr/local/cuda-12.8/bin/nvcc -forward-unknown-to-host-compiler   -g -std=c++14 \"--generate-code=arch=compute_120,code=[compute_120,sm_120]\" -x cu -c /home/star/star/cuda/CUDA_work/op/mha/m_mha.cu -o CMakeFiles/mha.dir/m_mha.cu.o",
+  "file": "/home/star/star/cuda/CUDA_work/op/mha/m_mha.cu",
+  "output": "op/mha/CMakeFiles/mha.dir/m_mha.cu.o"
+}
+]

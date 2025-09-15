@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "mynvcc",
+            "type": "shell",
+            "command": "nvcc",
+            "args": [
+                "-g",
+                "-G",
+                "-o",
+                "/home/star/star/cuda/CUDA_work/bin/rmsnorm",
+                "/home/star/star/cuda/CUDA_work/op/rmsnorm/m_rmsnorm.cu"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "cmake.debugConfig": {
+        "miDebuggerPath": "/usr/local/cuda-12.8/bin/cuda-gdb",
+    },
+    "cmake.sourceDirectory": "/home/star/star/cuda/CUDA_work/"
+}

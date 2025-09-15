@@ -1,0 +1,201 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "op/gemm",
+					"jsonFile" : "directory-op.gemm-Debug-04f09650efc6049ee4eb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "op/gemm",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "op/reduce",
+					"jsonFile" : "directory-op.reduce-Debug-2316f67bf678eb989835.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "op/reduce",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "op/softmax",
+					"jsonFile" : "directory-op.softmax-Debug-24200827e3b9a273a56a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "op/softmax",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "op/relu",
+					"jsonFile" : "directory-op.relu-Debug-eb01c6867dd20a4d3511.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "op/relu",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "op/rmsnorm",
+					"jsonFile" : "directory-op.rmsnorm-Debug-dbb69ff2b0a168752814.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "op/rmsnorm",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "op/mha",
+					"jsonFile" : "directory-op.mha-Debug-5c4a8df75cde0aa44d47.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "op/mha",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "Cudawork",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "gemm::@bfc9253a93175bb467ce",
+					"jsonFile" : "target-gemm-Debug-2672b70292d9b30004ce.json",
+					"name" : "gemm",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "mha::@a37c241cff1411a2a53e",
+					"jsonFile" : "target-mha-Debug-10713b34a57629c3dcfd.json",
+					"name" : "mha",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "reduce::@4522b91dd135e151e7e9",
+					"jsonFile" : "target-reduce-Debug-d02a58104cfc9ec2db33.json",
+					"name" : "reduce",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "relu::@f4c3cace0933250f93c1",
+					"jsonFile" : "target-relu-Debug-a45246899e5a9f6657ce.json",
+					"name" : "relu",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "rmsnorm::@b5aacaf698259ec73d99",
+					"jsonFile" : "target-rmsnorm-Debug-9021fb0c8891d5e5da23.json",
+					"name" : "rmsnorm",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "softmax::@1832e5c29b6c7f8f06c3",
+					"jsonFile" : "target-softmax-Debug-36a3c7e4b0447a820d50.json",
+					"name" : "softmax",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/star/star/cuda/CUDA_work/build",
+		"source" : "/home/star/star/cuda/CUDA_work"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

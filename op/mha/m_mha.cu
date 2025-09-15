@@ -4,16 +4,6 @@
 #include <cooperative_groups.h>
 #include <math.h>
 using namespace cooperative_groups;
-// const int M=1024;
-// const int N=1024;
-// const int head_size = 128;
-// const int head_num = 8;
-// const int kv_mul = 4;
-// const int kv_dim = 512;
-// const int pos = 10;
-// const int seq_len = 15;
-
-
 
 const int head_size = 512;
 const int head_num = 32;
@@ -41,7 +31,7 @@ __global__ void flash_attention(int32_t pos, int32_t seq_len, float* query,float
             float lastmax=-INFINITY;
             // float lastoutput=0.f;
             for(int i=0;i<pos;i++){
-                float* key_head = key_cache + pos*kv_dim + head_offset;
+                float* key_head = key_cache + i*kv_dim + head_offset;
                 float tmp3=0.f;
                 for(int j=0;j<f4num;j++){
                     float4 tmp1 = *(float4*)(query_head+j*4);
@@ -61,7 +51,7 @@ __global__ void flash_attention(int32_t pos, int32_t seq_len, float* query,float
                 tmp3 = expf(tmp3-max);
                 float sum = lastsum*expf(lastmax-max)+tmp3;
                 
-                float* value_head = value_cache+pos*kv_dim+head*head_size;
+                float* value_head = value_cache+i*kv_dim+head_offset;
                 for(int j=0;j<f4num;j++){
                     float4 tmp1 = *(float4*)(value_head+j*4);
                     float4* tmp2 = (float4*)(mem+j*4);
@@ -182,24 +172,17 @@ void checkcompute(float* a, float* b, int size){
 void test(int j){
     float* Query = (float*)malloc(N*sizeof(float));
     for(int i =0;i<N;i++){
-        Query[i] = 1;
+        Query[i] = i;
     }
 
     float* Key = (float*)malloc(seq_len*kv_dim*sizeof(float));
     float* Value = (float*)malloc(seq_len*kv_dim*sizeof(float));
     for(int i =0;i<seq_len*kv_dim;i++){
-        Key[i] = 1;
-        Value[i] = 1;
+        Key[i] = i;
+        Value[i] = i;
     }
     int layer_offset = 0;
-    // float* output = (float*)malloc(N*sizeof(float));
-    // for(int i =0;i<N;i++){
-    //     answer[i] = 0;
-    // }
-    
-    // float* score;
 
-    // float* result = (float*)malloc(M*N*sizeof(float));
     float* cuda_key;
     float* cuda_query;
     float* cuda_value;
@@ -213,10 +196,6 @@ void test(int j){
     cudaMemcpy(cuda_key,Key,seq_len*kv_dim*sizeof(float),cudaMemcpyHostToDevice);
     cudaMemcpy(cuda_value,Value,seq_len*kv_dim*sizeof(float),cudaMemcpyHostToDevice);
     cudaMemcpy(cuda_query,Query,N*sizeof(float),cudaMemcpyHostToDevice);
-    // if(j==0){
-    //     memset(answer, 0, head_num * head_size * sizeof(float));
-    // }
-
 
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
